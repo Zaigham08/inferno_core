@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inferno_core/res/constants.dart';
 import 'package:inferno_core/view/controls/network.dart';
+import 'package:inferno_core/view/controls/pc.dart';
 import 'package:inferno_core/view/controls_panel.dart';
 import 'package:inferno_core/view/files_page.dart';
 import 'package:inferno_core/view/splash.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      home: const Network(),
+      home: const PC(),
     );
   }
 }
