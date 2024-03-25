@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inferno_core/res/constants.dart';
-import 'package:inferno_core/view/reports_page.dart';
+import 'package:inferno_core/view/files_page.dart';
 import '../view models/controllers/general_controller.dart';
 import 'home.dart';
 import 'targets_page.dart';
@@ -20,7 +20,7 @@ class _NavBarState extends State<NavBar> {
   final List<Widget> _pages = [
     const HomePage(),
     const AllTargetsPage(),
-    const ReportsPage(),
+    ExtractedFilesPage(),
   ];
 
   @override
@@ -53,7 +53,7 @@ class _NavBarState extends State<NavBar> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.arrow_down_doc_fill),
-                label: 'Reports',
+                label: 'Files',
               ),
             ],
           ),

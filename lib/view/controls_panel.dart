@@ -8,10 +8,12 @@ import 'package:inferno_core/res/helper_extensions.dart';
 import 'package:inferno_core/view/controls/clipboard.dart';
 import 'package:inferno_core/view/controls/host_file.dart';
 import 'package:inferno_core/view/controls/keylogger.dart';
+import 'package:inferno_core/view/controls/network.dart';
 import 'package:inferno_core/view/controls/shell.dart';
 import 'package:inferno_core/view/controls/sys_files.dart';
 import 'package:inferno_core/view/controls/task_manager.dart';
 
+import '../res/widgets/general widgets/dotted_strings.dart';
 import '../res/widgets/general widgets/my_text.dart';
 
 class ControlPanel extends StatelessWidget {
@@ -46,9 +48,9 @@ class ControlPanel extends StatelessWidget {
                       ),
                     ),
                     4.ph,
-                    targetInfo(t1: "Operating System", t2: "Window"),
-                    targetInfo(t1: "Uptime", t2: "10 mints"),
-                    targetInfo(t1: "Ram", t2: "4 gbs"),
+                    dotsSeparatedStrings(t1: "Operating System", t2: "Window"),
+                    dotsSeparatedStrings(t1: "Uptime", t2: "10 mints"),
+                    dotsSeparatedStrings(t1: "Ram", t2: "4 gbs"),
                   ],
                 ),
               ),
@@ -86,11 +88,19 @@ class ControlPanel extends StatelessWidget {
               CommandSection(
                 sectionName: "Surveillance commands",
                 items: [
+                  // CommandItem(
+                  //   text: "Camera",
+                  //   icon: Icons.camera,
+                  //   iconSize: 30,
+                  //   onTap: () {},
+                  // ),
                   CommandItem(
-                    text: "Camera",
-                    icon: Icons.camera,
-                    iconSize: 30,
-                    onTap: () {},
+                    text: "Keylogger",
+                    icon: FontAwesomeIcons.keyboard,
+                    iconSize: 27,
+                    onTap: () {
+                      Get.to(() => const KeyLogger());
+                    },
                   ),
                   CommandItem(
                     text: "Screen",
@@ -98,10 +108,18 @@ class ControlPanel extends StatelessWidget {
                     iconSize: 30,
                     onTap: () {},
                   ),
+                  CommandItem(
+                    text: "Network",
+                    icon: Icons.network_wifi,
+                    iconSize: 30,
+                    onTap: () {
+                      Get.to(() => const Network());
+                    },
+                  ),
                 ],
               ),
               CommandSection(
-                sectionName: "Common commands",
+                sectionName: "Other commands",
                 items: [
                   CommandItem(
                     text: "Shell",
@@ -124,14 +142,6 @@ class ControlPanel extends StatelessWidget {
                       Get.to(() => const ClipboardPage());
                     },
                   ),
-                  CommandItem(
-                    text: "Keylogger",
-                    icon: FontAwesomeIcons.keyboard,
-                    iconSize: 27,
-                    onTap: () {
-                      Get.to(() => const KeyLogger());
-                    },
-                  ),
                 ],
               ),
             ],
@@ -140,17 +150,6 @@ class ControlPanel extends StatelessWidget {
       ),
     );
   }
-}
-
-Padding targetInfo({required String t1, required String t2}) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 3),
-    child: MyText(
-      "$t1 :  $t2",
-      fontWeight: FontWeight.bold,
-      fontSize: 17,
-    ),
-  );
 }
 
 class CommandSection extends StatelessWidget {

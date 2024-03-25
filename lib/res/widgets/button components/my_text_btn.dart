@@ -4,7 +4,8 @@ import '../../constants.dart';
 
 class MyTextButton extends StatelessWidget {
   final String text;
-  final double width, height, btnTxtSize, radius;
+  final double? width, height;
+  final double btnTxtSize, radius;
   final double? spacing;
   final VoidCallback onPressed;
   final bool isLoading;
@@ -14,7 +15,7 @@ class MyTextButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    required this.width,
+    this.width,
     this.height = 47,
     this.buttonColor = btnColor,
     this.isLoading = false,
@@ -30,6 +31,7 @@ class MyTextButton extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: buttonColor,
           borderRadius: BorderRadius.circular(radius),
@@ -42,6 +44,7 @@ class MyTextButton extends StatelessWidget {
                 )
               : Text(
                   text,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: btnTxtSize,
                     fontWeight: FontWeight.w600,
