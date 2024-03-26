@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:inferno_core/res/constants.dart';
 import 'package:inferno_core/res/helper_extensions.dart';
+import 'package:inferno_core/view/controls/accounts.dart';
 import 'package:inferno_core/view/controls/clipboard.dart';
 import 'package:inferno_core/view/controls/host_file.dart';
 import 'package:inferno_core/view/controls/keylogger.dart';
@@ -16,6 +17,8 @@ import 'package:inferno_core/view/controls/task_manager.dart';
 
 import '../res/widgets/general widgets/dotted_strings.dart';
 import '../res/widgets/general widgets/my_text.dart';
+import 'controls/miscellaneous.dart';
+import 'controls/programs.dart';
 
 class ControlPanel extends StatelessWidget {
   const ControlPanel({Key? key}) : super(key: key);
@@ -70,19 +73,37 @@ class ControlPanel extends StatelessWidget {
                     text: "Account",
                     icon: FontAwesomeIcons.circleUser,
                     onTap: () {
+                      Get.to(() => const Accounts());
                     },
                   ),
                   CommandItem(
                     text: "Firewall",
                     icon: Icons.security,
-                    onTap: () {
-                      Get.to(() => const TaskManagerPage());
-                    },
+                    onTap: () {},
                   ),
                   CommandItem(
                     text: "Hardware",
                     icon: Icons.hardware,
                     iconSize: 29,
+                    onTap: () {},
+                  ),
+                  CommandItem(
+                    text: "Programs",
+                    icon: Icons.computer,
+                    onTap: () {
+                      Get.to(() => const Programs());
+                    },
+                  ),
+                  CommandItem(
+                    text: "Task Manager",
+                    icon: Icons.task,
+                    onTap: () {
+                      Get.to(() => const TaskManagerPage());
+                    },
+                  ),
+                  CommandItem(
+                    text: "HostFile",
+                    icon: Icons.file_copy,
                     onTap: () {
                       Get.to(() => const HostFilePage());
                     },
@@ -92,12 +113,6 @@ class ControlPanel extends StatelessWidget {
               CommandSection(
                 sectionName: "Surveillance commands",
                 items: [
-                  // CommandItem(
-                  //   text: "Camera",
-                  //   icon: Icons.camera,
-                  //   iconSize: 30,
-                  //   onTap: () {},
-                  // ),
                   CommandItem(
                     text: "Keylogger",
                     icon: FontAwesomeIcons.keyboard,
@@ -146,6 +161,13 @@ class ControlPanel extends StatelessWidget {
                       Get.to(() => const ClipboardPage());
                     },
                   ),
+                  CommandItem(
+                    text: "Miscellaneous",
+                    icon: Icons.miscellaneous_services,
+                    onTap: () {
+                      Get.to(() => const Miscellaneous());
+                    },
+                  ),
                 ],
               ),
             ],
@@ -183,21 +205,16 @@ class CommandSection extends StatelessWidget {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: Get.width / 3.6,
-              // Adjust the maximum width of each item
-              childAspectRatio: 1.25),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 130,
+            mainAxisExtent: 78,
+            childAspectRatio: 1.25,
+          ),
           itemCount: items.length,
           itemBuilder: (context, index) {
             return items[index];
           },
         ),
-        // Wrap(
-        //   spacing: Get.width * .1,
-        //   runSpacing: 8,
-        //   alignment: WrapAlignment.spaceBetween,
-        //   children: items,
-        // ),
       ],
     );
   }
@@ -225,7 +242,7 @@ class CommandItem extends StatelessWidget {
         children: [
           Icon(icon, size: iconSize),
           8.ph,
-          MyText(text),
+          Expanded(child: MyText(text, textAlign: TextAlign.center)),
         ],
       ),
     );

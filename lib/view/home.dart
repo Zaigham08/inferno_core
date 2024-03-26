@@ -57,16 +57,16 @@ class HomePage extends StatelessWidget {
               ),
               TargetWidget(
                 name: "Munir",
+                onTap: () {},
+              ),
+              TargetWidget(
+                name: "Zain",
                 onTap: () {
                   Get.to(() => const ControlPanel());
                 },
               ),
               TargetWidget(
                 name: "Usman",
-                onTap: () {},
-              ),
-              TargetWidget(
-                name: "Zain",
                 onTap: () {},
               ),
               15.ph,
@@ -86,11 +86,10 @@ class HomePage extends StatelessWidget {
                       const Text(
                         "Chat with AI",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: whiteColor,
-                          letterSpacing: 1.5
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: whiteColor,
+                            letterSpacing: 1.5),
                       ),
                       SvgPicture.asset(
                         "assets/icons/robot_icon.svg",

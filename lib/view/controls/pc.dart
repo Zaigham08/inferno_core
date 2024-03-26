@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:inferno_core/res/constants.dart';
 import 'package:inferno_core/res/helper_extensions.dart';
 
-import '../../res/widgets/general widgets/my_text.dart';
+import '../../res/widgets/button components/icon_text_btn.dart';
 
 class PC extends StatelessWidget {
   const PC({Key? key}) : super(key: key);
@@ -24,16 +24,19 @@ class PC extends StatelessWidget {
                 IconTextBtn(
                   btnText: "Restart",
                   icon: Icons.restart_alt,
+                  height: 120,
                   onTap: () {},
                 ),
                 IconTextBtn(
                   btnText: "Shutdown",
                   icon: CupertinoIcons.power,
+                  height: 120,
                   onTap: () {},
                 ),
                 IconTextBtn(
                   btnText: "Freeze",
                   icon: Icons.pause,
+                  height: 120,
                   onTap: () {},
                 ),
               ],
@@ -48,6 +51,7 @@ class PC extends StatelessWidget {
                       btnText: "Minimize all windows",
                       icon: FontAwesomeIcons.minimize,
                       iconSize: 33,
+                      height: 65,
                       isVertical: false,
                       onTap: () {},
                     ),
@@ -76,57 +80,3 @@ class PC extends StatelessWidget {
   }
 }
 
-class IconTextBtn extends StatelessWidget {
-  final String btnText;
-  final IconData icon;
-  final VoidCallback onTap;
-  final double iconSize, textSize;
-  final bool isVertical;
-
-  const IconTextBtn({
-    super.key,
-    required this.btnText,
-    required this.icon,
-    required this.onTap,
-    this.iconSize = 40,
-    this.textSize = 17,
-    this.isVertical = true,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: whiteColor, width: 2),
-        ),
-        child: Center(
-          child: isVertical
-              ? Column(
-                  children: [
-                    Icon(icon, size: iconSize),
-                    8.ph,
-                    MyText(
-                      btnText,
-                      fontSize: textSize,
-                    ),
-                  ],
-                )
-              : Row(
-                  children: [
-                    Icon(icon, size: iconSize-5),
-                    10.pw,
-                    MyText(
-                      btnText,
-                      fontSize: textSize,
-                    ),
-                  ],
-                ),
-        ),
-      ),
-    );
-  }
-}
