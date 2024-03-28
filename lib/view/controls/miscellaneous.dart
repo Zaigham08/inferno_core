@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inferno_core/res/constants.dart';
@@ -23,7 +22,7 @@ class Miscellaneous extends StatelessWidget {
               children: [
                 IconTextBtn(
                   btnText: "CMD\n enable/disable",
-                  icon: Icons.restart_alt,
+                  icon: Icons.settings,
                   width: Get.width*.42,
                   height: 166,
                   onTap: () {},
@@ -31,7 +30,7 @@ class Miscellaneous extends StatelessWidget {
                 5.pw,
                 IconTextBtn(
                   btnText: "Task Manager\n enable/disable",
-                  icon: CupertinoIcons.power,
+                  icon: Icons.widgets,
                   width: Get.width*.42,
                   height: 166,
                   onTap: () {},
@@ -44,7 +43,7 @@ class Miscellaneous extends StatelessWidget {
               children: [
                 IconTextBtn(
                   btnText: "Internet\n enable/disable",
-                  icon: Icons.restart_alt,
+                  icon: Icons.wifi,
                   width: Get.width*.42,
                   height: 166,
                   onTap: () {},
@@ -52,7 +51,7 @@ class Miscellaneous extends StatelessWidget {
                 5.pw,
                 IconTextBtn(
                   btnText: "Clear Logs",
-                  icon: CupertinoIcons.power,
+                  icon: Icons.delete_outline,
                   width: Get.width*.42,
                   height: 166,
                   onTap: () {},

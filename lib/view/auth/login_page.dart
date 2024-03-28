@@ -48,7 +48,7 @@ class LoginPage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image.asset(
-                        'assets/images/logo.jpg',
+                        'assets/images/infernocore_logo.jpg',
                         height: 100,
                         width: 100,
                       ),

@@ -22,11 +22,15 @@ class TaskManagerPage extends StatelessWidget {
               Table(
                 border: TableBorder.all(color: Colors.white),
                 children: [
-                  _buildTableRow(['P id', 'Name', 'CPU', 'Ram', ''], isHeading: true),
-                  _buildTableRow(['hy', 'by', 'R', 'hel', 'btn']),
-                  _buildTableRow(['hy', 'by', 'R', 'hel', 'btn']),
-                  _buildTableRow(['hy', 'by', 'R', 'hel', 'btn']),
-                  _buildTableRow(['hy', 'by', 'R', 'hel', 'btn']),
+                  _buildTableRow(['P id', 'Name', 'CPU', 'Ram', ''],
+                      isHeading: true),
+                  _buildTableRow(
+                      ['1', 'VLC Media Player', '5%', '400 MB', _addBtn()]),
+                  _buildTableRow(
+                      ['2', 'Google Chrome', '20%', '800 MB', _addBtn()]),
+                  _buildTableRow(
+                      ['3', 'Adobe Acrobat Reader', '2%', '100 MB', _addBtn()]),
+                  _buildTableRow(['4', 'Skype', '1%', '50 MB', _addBtn()]),
                 ],
               ),
             ],
@@ -37,16 +41,47 @@ class TaskManagerPage extends StatelessWidget {
   }
 }
 
-TableRow _buildTableRow(List<String> data, {bool isHeading = false}) {
-  return TableRow(
-    children: data.map((cellData) => TableCell(
-      child: Padding(
-        padding: const EdgeInsets.all(7),
-        child: Text(cellData,style: TextStyle(
-          color: isHeading ? Colors.yellow : whiteColor,
-          fontWeight: isHeading ? FontWeight.bold : null,
-        )),
+Widget _addBtn() {
+  return InkWell(
+    onTap: () {},
+    child: Container(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        color: Colors.red,
       ),
-    )).toList(),
+      child: const Center(
+        child: Icon(Icons.delete, size: 26),
+      ),
+    ),
   );
+}
+
+TableRow _buildTableRow(List<dynamic> data, {bool isHeading = false}) {
+  final List<Widget> cells = data
+      .map((cellData) {
+        if (cellData is String) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
+            child: Text(
+              cellData,
+              style: TextStyle(
+                color: isHeading ? Colors.yellow : whiteColor,
+                fontWeight: isHeading ? FontWeight.bold : null,
+              ),
+            ),
+          );
+        } else if (cellData is Widget) {
+          return Padding(
+            padding: const EdgeInsets.all(6.5),
+            child: cellData,
+          );
+        }
+        return null;
+      })
+      .where((element) => element != null)
+      .toList()
+      .cast<Widget>();
+
+  return TableRow(children: cells);
 }

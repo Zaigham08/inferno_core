@@ -23,12 +23,11 @@ class Programs extends StatelessWidget {
               Table(
                 border: TableBorder.all(color: Colors.white),
                 children: [
-                  _buildTableRow(['Name', 'Publisher', 'Version', ''],
-                      isHeading: true),
-                  _buildTableRow(['hy', 'by', 'R', _addBtn()]),
-                  _buildTableRow(['hy', 'by', 'R', _addBtn()]),
-                  _buildTableRow(['hy', 'by', 'R', _addBtn()]),
-                  _buildTableRow(['hy', 'by', 'R', _addBtn()]),
+                  _buildTableRow(['Name', 'Publisher', 'Version', ''], isHeading: true),
+                  _buildTableRow(['VLC Media Player', 'VideoLAN', '3.0.16', _addBtn()]),
+                  _buildTableRow(['Google Chrome', 'Google LLC', '99.0.4844.82', _addBtn()]),
+                  _buildTableRow(['Adobe Acrobat Reader', 'Adobe Inc.', 'DC 2021', _addBtn()]),
+                  _buildTableRow(['Skype', 'Microsoft Corporation', '8.80.0.178', _addBtn()]),
                 ],
               ),
             ],
