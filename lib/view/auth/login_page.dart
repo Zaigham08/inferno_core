@@ -33,7 +33,8 @@ class LoginPage extends StatelessWidget {
           height: Get.height,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/background.png'), // Replace with your image path
+              image: AssetImage('assets/images/background.png'),
+              // Replace with your image path
               fit: BoxFit.cover,
             ),
           ),
@@ -99,7 +100,8 @@ class LoginPage extends StatelessWidget {
                             width: 450,
                             textColor: blackColor,
                             icon: Icons.lock_outline,
-                            controller: loginController.passwordController.value,
+                            controller:
+                                loginController.passwordController.value,
                             focusNode: loginController.passwordFocusNode.value,
                             hidePassword: loginController.hidePassword.value,
                             textCapitalization: TextCapitalization.none,
@@ -114,7 +116,8 @@ class LoginPage extends StatelessWidget {
                                 loginController.toggleHidePassword();
                               },
                               child: Container(
-                                padding: const EdgeInsets.only(right: 12, left: 2),
+                                padding:
+                                    const EdgeInsets.only(right: 12, left: 2),
                                 child: Icon(
                                   loginController.hidePassword.value
                                       ? CupertinoIcons.eye
@@ -135,10 +138,10 @@ class LoginPage extends StatelessWidget {
                       width: 450,
                       isLoading: loginController.loading.value,
                       onPressed: () {
-                        Get.to(()=> const NavBar());
-                        // if (_formKey.currentState!.validate()) {
-                        // }
-                        // loginController.login();
+                        Get.to(() => const NavBar());
+                        if (_formKey.currentState!.validate()) {
+                          loginController.login();
+                        }
                       },
                     ),
                   ),
@@ -162,7 +165,7 @@ class LoginPage extends StatelessWidget {
                   60.ph,
                   RichTextsLink(
                     onPressed: () {
-                      Get.to(()=> RegisterPage(),
+                      Get.to(() => RegisterPage(),
                           transition: Transition.downToUp,
                           duration: const Duration(milliseconds: 800));
                     },

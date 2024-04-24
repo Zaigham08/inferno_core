@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -15,17 +14,14 @@ import '../../view models/services/google_auth_service.dart';
 import '../app_exceptions.dart';
 import 'base_api_services.dart';
 
-
 class NetworkApiServices extends BaseApiServices {
   final AuthService _authService = AuthService();
 
   @override
   Future getApi(String url) async {
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
 
     dynamic responseJson;
@@ -53,12 +49,10 @@ class NetworkApiServices extends BaseApiServices {
   Future getApiWithParams(String url, var params) async {
     debugPrint("param = $params");
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
 
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
 
     dynamic responseJson;
@@ -86,12 +80,10 @@ class NetworkApiServices extends BaseApiServices {
   Future postApi(String url, var data ,{int time = 50}) async {
     debugPrint("data -----------------  ${jsonEncode(data)}");
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
 
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     dynamic responseJson;
     try {
@@ -117,12 +109,10 @@ class NetworkApiServices extends BaseApiServices {
   Future postApiWithParams(String url, var data, var params,{bool sendJson = true}) async {
     debugPrint("params -----------------  ${jsonEncode(params)}");
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
 
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     dynamic responseJson;
     try {
@@ -159,11 +149,9 @@ class NetworkApiServices extends BaseApiServices {
   Future putApi(String url, var data, var param) async {
     debugPrint("data -----------------  $data");
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     dynamic responseJson;
     try {
@@ -192,11 +180,9 @@ class NetworkApiServices extends BaseApiServices {
   Future deleteApi(String url, var data) async {
     debugPrint("data -----------------  $data");
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     dynamic responseJson;
     try {
@@ -227,11 +213,9 @@ class NetworkApiServices extends BaseApiServices {
   @override
   Future deleteApiWithParams(String url, var params) async {
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
 
     dynamic responseJson;
@@ -263,11 +247,9 @@ class NetworkApiServices extends BaseApiServices {
     final request = http.MultipartRequest('POST', Uri.parse(url).replace(queryParameters: params));
 
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Authorization': 'Bearer $idToken',
       'Content-Type': 'multipart/form-data',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     // Add file to the request
     final file = await http.MultipartFile.fromPath(
@@ -301,11 +283,9 @@ class NetworkApiServices extends BaseApiServices {
     final request = http.MultipartRequest('POST', Uri.parse(url));
 
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Authorization': 'Bearer $idToken',
       'Content-Type': 'multipart/form-data',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     // Add file to the request
     final file = await http.MultipartFile.fromPath(
@@ -340,11 +320,9 @@ class NetworkApiServices extends BaseApiServices {
 
   Future downloadFile(String url, var params, String fileName, String fileExtension) async {
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     try {
       final response = await http
@@ -372,12 +350,10 @@ class NetworkApiServices extends BaseApiServices {
   Future postApiForFileBytes(String url, var data) async {
     debugPrint("data -----------------  $data");
     String? idToken = await _authService.getIdToken();
-    final appCheckToken = await FirebaseAppCheck.instance.getToken();
 
     final headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $idToken',
-      'x-firebase-appcheck': appCheckToken ?? 'null'
     };
     try {
       final response = await http
